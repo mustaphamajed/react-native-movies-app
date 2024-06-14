@@ -1,11 +1,11 @@
-import { Image, StyleSheet, Text, View } from 'react-native'
+import { Image, Pressable, StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import { colors } from '../../helpers/colors'
 import { placeholderImage } from '../../helpers/images'
 
-const MovieCard = ({item}) => {
+const MovieCard = ({item,onPress}) => {
   return (
-    <View style={styles.movieItem}>
+    <Pressable style={styles.movieItem} onPress={onPress}>
     <Image source={item.Poster !== 'N/A'?{ uri: item.Poster }:placeholderImage} style={styles.poster} resizeMode={item.Poster === 'N/A'&&'center'} />
     <View style={styles.movieDetails}>
               <Text style={styles.title}>{item.Title}</Text>
@@ -14,7 +14,7 @@ const MovieCard = ({item}) => {
      
 
     </View>
-  </View>
+  </Pressable>
   )
 }
 

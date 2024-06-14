@@ -5,8 +5,11 @@ import useMovies from '../../hooks/useMovies';
 import MovieCard from '../../components/cards/movieCard';
 import { colors } from '../../helpers/colors';
 import SearchInput from '../../components/forms/searchInput';
+import { useNavigation } from '@react-navigation/native';
+import { ROUTE_NAMES } from '../../helpers/routes';
 
 const HomeScreen = () => {
+    const navigation = useNavigation()
     const { movies, loading, refreshing, hasMore, searchTerm, setSearchTerm, loadMoreMovies, refreshMovies } = useMovies();
   return (
       <View style={styles.container}>
@@ -19,7 +22,7 @@ const HomeScreen = () => {
         data={movies}
         keyExtractor={(item) => item.imdbID}
         renderItem={({ item }) => (
-        <MovieCard item={item}/>
+        <MovieCard item={item} onPress={() => navigation.navigate(ROUTE_NAMES.DETAILS, { id: item.imdbID })} />
         )}
         onEndReached={loadMoreMovies}
         onEndReachedThreshold={0.5}
