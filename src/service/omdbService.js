@@ -17,3 +17,18 @@ export const fetchMovies = async (searchTerm, page = 1) => {
 return error
   }
 };
+
+export const fetchMovieDetails = async (id) => {
+    try {
+      const response = await axios.get(BASE_URL, {
+          params: {
+        apikey: API_KEY,
+            
+          i: id,
+        },
+      });
+      return response.data;
+    } catch (error) {
+return error
+    }
+  };
