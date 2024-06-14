@@ -1,10 +1,15 @@
-import { View, Text } from 'react-native'
 import React from 'react'
 import RootNavigation from './src/navigation/rootNavigation'
+import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context'
 
 const App = () => {
-  return (
-   <RootNavigation />
+    return (
+        <SafeAreaProvider>
+            <SafeAreaView style={{flex:1}}>
+                
+            <RootNavigation />
+</SafeAreaView>
+        </SafeAreaProvider>
   )
 }
 
