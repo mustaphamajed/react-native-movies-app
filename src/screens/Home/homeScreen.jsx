@@ -14,9 +14,10 @@ const HomeScreen = () => {
         <View style={styles.container}>
             <View style={{ padding: 16 }}>
 
-                <SearchInput searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
+                <SearchInput searchTerm={searchTerm} setSearchTerm={setSearchTerm} placeholder={"Search movies..."}/>
             </View>
             <FlatList
+                testID="flat-list"
                 style={{ paddingHorizontal: 16 }}
                 data={movies}
                 keyExtractor={(item) => item.imdbID}
@@ -26,7 +27,7 @@ const HomeScreen = () => {
                 )}
                 onEndReached={loadMoreMovies}
                 onEndReachedThreshold={0.5}
-                ListFooterComponent={loading && <ActivityIndicator size="large" color={colors.blue} />}
+                ListFooterComponent={loading && <ActivityIndicator testID="loading-indicator" size="large" color={colors.blue} />}
                 refreshing={refreshing}
                 onRefresh={refreshMovies}
             />

@@ -2,11 +2,11 @@ import { StyleSheet, Text, TextInput, View } from 'react-native'
 import React from 'react'
 import { colors } from '../../helpers/colors'
 
-const SearchInput = ({searchTerm,setSearchTerm}) => {
+const SearchInput = ({searchTerm,setSearchTerm,placeholder}) => {
   return (
  <TextInput
         style={styles.searchInput}
-        placeholder="Search movies..."
+        placeholder={placeholder}
         value={searchTerm}
         onChangeText={setSearchTerm}
       />
